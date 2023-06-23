@@ -20,9 +20,9 @@ class Company extends Model
         'logo',
     ];
 
-    public function users()
+    public function user_companies()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(UserCompany::class);
     }
 
     public function teams()
