@@ -24,7 +24,7 @@ class EmployeeController extends Controller
         $company_id = $request->input('company_id');
         $limit = $request->input('limit', 10);
 
-        $employeeQuery = Employee::query();
+        $employeeQuery = Employee::with('team', 'role');
 
         // Get single data
         if ($id) {
@@ -96,7 +96,7 @@ class EmployeeController extends Controller
                 'gender' => $request->gender,
                 'age' => $request->age,
                 'phone' => $request->phone,
-                'photo' => $path,
+                'photo' => isset($path) ? $path : '',
                 'team_id' => $request->team_id,
                 'role_id' => $request->role_id,
             ]);
